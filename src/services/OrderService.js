@@ -76,7 +76,6 @@ const createOrder = (newOrder) => {
           isPaid,
           paidAt,
         });
-        console.log(createOrder);
         if (createOrder) {
           await EmailService.sendEmailCreateOrder(email, totalPrice, address, shippingPrice, orderItems, paymentMethod);
           resolve({
@@ -187,7 +186,6 @@ const getDetailsOrder = (id) => {
           message: "Hóa đơn không tồn tại",
         });
       }
-      console.log("order", order);
       resolve({
         status: "OK",
         message: "SUCESSS",

@@ -33,18 +33,17 @@ const refreshTokenJwtService = (token) => {
         if (err) {
           resolve({
             status: "ERR",
-            messsage: err.toString(),
+            message: "The authemtication",
           });
         }
-
-        const refresh_token = await generalRefreshToken({
+        const access_token = await generalAccessToken({
           id: user?.id,
           isAdmin: user?.isAdmin,
         });
         resolve({
           status: "OK",
-          messsage: "Làm mới token thành công",
-          refresh_token: refresh_token,
+          message: "SUCESS",
+          access_token,
         });
       });
     } catch (e) {
