@@ -67,7 +67,7 @@ const loginUser = async (req, res) => {
       // Các tùy chọn khác của cookie (nếu cần)
     });
 
-    return res.status(200).json({ newResponse, refresh_token });
+    return res.status(200).json({ ...newResponse, refresh_token });
   } catch (e) {
     return res.status(404).json({
       message: e.toString(),
