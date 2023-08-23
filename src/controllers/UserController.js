@@ -57,9 +57,9 @@ const loginUser = async (req, res) => {
     }
     const response = await UserService.loginUser(req.body);
 
-    const { refresh_token, ...newResponse } = response;
+    const { access_token, ...newResponse } = response;
 
-    res.cookie("refresh_token", refresh_token, {
+    res.cookie("access_token", access_token, {
       httpOnly: true,
       secure: false, // Sử dụng 'true' nếu bạn sử dụng HTTPS
       sameSite: "strict",
@@ -67,7 +67,7 @@ const loginUser = async (req, res) => {
       // Các tùy chọn khác của cookie (nếu cần)
     });
 
-    return res.status(200).json({ ...newResponse, refresh_token });
+    return res.status(200).json({ response, access_token });
   } catch (e) {
     return res.status(404).json({
       message: e.toString(),
